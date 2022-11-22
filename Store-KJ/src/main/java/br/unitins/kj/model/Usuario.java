@@ -8,6 +8,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
+import br.unitins.kj.model.especial.Gostei;
+
 @Entity
 public class Usuario extends DefaultEntity{
 	
@@ -20,11 +22,15 @@ public class Usuario extends DefaultEntity{
 	private String senha;
 	
 	private LocalDate dataNascimento;
+	@NotBlank(message="Perfil de usuario não informado!")
 	private Perfil perfil;
 
 	@ManyToOne
 	@Column(name="id_cidade")
 	private Cidade cidade;
+	
+	@OneToOne
+	private Gostei gostei;
 	
 	@OneToOne
 	@Column(name="id_endereco", unique=true)

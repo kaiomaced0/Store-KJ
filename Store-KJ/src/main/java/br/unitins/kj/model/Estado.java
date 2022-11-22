@@ -1,11 +1,20 @@
 package br.unitins.kj.model;
 
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Estado extends DefaultEntity{
 	private String sigla;
 	private String nome;
+	
+	@OneToMany
+	@Column(name="cidadesEstado")
+	private List<Cidade> cidadesEstado;
+	
 	
 	public String getSigla() {
 		return sigla;

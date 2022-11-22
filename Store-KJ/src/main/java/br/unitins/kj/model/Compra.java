@@ -2,7 +2,10 @@ package br.unitins.kj.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
 import br.unitins.kj.model.especial.Cupom;
@@ -12,9 +15,12 @@ public class Compra extends DefaultEntity {
 	
 	@NotBlank
 	private Carrinho carrinho;
-	private List<Cupom> cupons;
 	
+	@NotBlank
+	private Pagamento pagamento;
 	
+	@OneToOne
+	private AcompanhamentoCompra acompanhamentoCompra;
 	
 
 }

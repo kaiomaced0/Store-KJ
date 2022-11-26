@@ -1,6 +1,8 @@
 package br.unitins.kj.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Endereco extends DefaultEntity{
@@ -9,6 +11,10 @@ public class Endereco extends DefaultEntity{
 	private String bairro;
 	private String cep;
 	private String infoAdicional;
+
+	@ManyToOne
+	@Column(name="usuario_endereco", unique=true)
+	private Usuario usuario;
 	
 	public String getNome() {
 		return nome;

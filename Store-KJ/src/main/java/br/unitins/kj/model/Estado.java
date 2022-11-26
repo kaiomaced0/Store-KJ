@@ -12,9 +12,8 @@ public class Estado extends DefaultEntity{
 	private String nome;
 	
 	@OneToMany
-	@Column(name="cidadesEstado")
-	private List<Cidade> cidadesEstado;
-	
+	@Column(name="cidades_Estado")
+	private List<Cidade> cidadesEstado;	
 	
 	public String getSigla() {
 		return sigla;

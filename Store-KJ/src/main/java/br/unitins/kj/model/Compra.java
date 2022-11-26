@@ -22,5 +22,7 @@ public class Compra extends DefaultEntity {
 	@OneToOne
 	private AcompanhamentoCompra acompanhamentoCompra;
 	
+	private Boolean pagamentoRealizado;
+	
 
 }

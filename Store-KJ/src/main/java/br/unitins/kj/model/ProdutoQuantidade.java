@@ -12,7 +12,7 @@ public class ProdutoQuantidade extends DefaultEntity{
 	private Produto produto;
 	
 	private Integer quantidade;
-	private Double valor;
+	private Double valor = produto.getValor() * quantidade;
 	
 
 	public Integer getQuantidade() {

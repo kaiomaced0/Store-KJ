@@ -21,7 +21,7 @@ public class Carrinho extends DefaultEntity{
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
-
+	
 	@OneToMany
 	@Column(name="cupons")
 	private List<Cupom> cupons;

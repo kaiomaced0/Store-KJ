@@ -34,4 +34,11 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/main/webapp/resources/images/logo.png</name>
+			<type>1</type>
+			<location>C:/Users/kaiom/Downloads/logo.png</location>
+		</link>
+	</linkedResources>
 </projectDescription>

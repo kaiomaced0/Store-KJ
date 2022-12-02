@@ -8,15 +8,12 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.unitins.topicos1.farmacia.application.Session;
-import br.unitins.topicos1.farmacia.application.Util;
-import br.unitins.topicos1.farmacia.model.BandeiraCartao;
-import br.unitins.topicos1.farmacia.model.Compra;
-import br.unitins.topicos1.farmacia.model.ItemCompra;
-import br.unitins.topicos1.farmacia.model.Pagamento;
-import br.unitins.topicos1.farmacia.model.TipoPagamento;
-import br.unitins.topicos1.farmacia.model.Usuario;
-import br.unitins.topicos1.farmacia.repository.CompraRepository;
+import br.unitins.kj.application.Session;
+import br.unitins.kj.application.Util;
+import br.unitins.kj.model.Compra;
+import br.unitins.kj.model.Pagamento;
+import br.unitins.kj.model.Usuario;
+import br.unitins.kj.repository.CompraRepository;
 
 @ViewScoped
 @Named

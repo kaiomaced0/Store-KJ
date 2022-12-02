@@ -12,7 +12,12 @@ public class ProdutoRepository extends Repository<Produto>{
 
 	public List<Produto> buscarTodos() {
 		Query query = getEntityManager().createQuery("SELECT p FROM Compra p ORDER BY p.nome DESC");
-		return query.getResultList();
+		try {
+			return query.getResultList();
+		}
+		catch (Exception e) {
+			return query.getResultList();
+		}
 	}
 	public List<Produto> buscarPeloNome(String nome) {
 		
@@ -28,7 +33,11 @@ public class ProdutoRepository extends Repository<Produto>{
 		Query query = getEntityManager().createQuery(jpql.toString());
 		query.setParameter("nome", "%"+nome+"%");
 		
-		return query.getResultList();
-		
+		try {
+			return query.getResultList();
+		}
+		catch (Exception e) {
+			return query.getResultList();
+		}
 	}
 }

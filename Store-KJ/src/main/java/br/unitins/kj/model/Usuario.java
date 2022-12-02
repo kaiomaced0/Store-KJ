@@ -12,6 +12,7 @@ import javax.validation.constraints.NotBlank;
 
 import br.unitins.kj.model.especial.Gostei;
 
+
 @Entity
 public class Usuario extends DefaultEntity{
 	

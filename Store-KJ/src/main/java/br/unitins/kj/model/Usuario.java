@@ -29,7 +29,6 @@ public class Usuario extends DefaultEntity{
 	private Perfil perfil;
 
 	@ManyToOne
-	@Column(name="id_cidade")
 	private Cidade cidade;
 	
 	@OneToOne

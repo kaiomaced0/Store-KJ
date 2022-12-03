@@ -14,10 +14,9 @@ public class TesteJPA {
 		EntityManager em = emf.createEntityManager();
 		
 		Usuario usuario = new Usuario();
-		usuario.setId(1);
-		usuario.setNome("Carlos Henrique");
-		usuario.setLogin("carlos");
-		usuario.setSenha("123");
+		usuario.setNome("test1");
+		usuario.setLogin("1");
+		usuario.setSenha("1");
 		
 		em.getTransaction().begin();
 		em.persist(usuario);

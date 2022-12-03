@@ -10,41 +10,44 @@ import javax.inject.Named;
 
 import br.unitins.kj.application.Session;
 import br.unitins.kj.application.Util;
+import br.unitins.kj.model.AcompanhamentoCompra;
 import br.unitins.kj.model.Compra;
 import br.unitins.kj.model.Pagamento;
+import br.unitins.kj.model.ProdutoQuantidade;
+import br.unitins.kj.model.TipoPagamento;
 import br.unitins.kj.model.Usuario;
 import br.unitins.kj.repository.CompraRepository;
+import br.unitins.kj.repository.PagamentoRepository;
 
 @ViewScoped
 @Named
 public class FinalizarCompraController implements Serializable{
 
-	private static final long serialVersionUID = -5026285540821281897L;
 	
-	private Compra carrinho;
+	
+	private static final long serialVersionUID = -357236187444858111L;
+
+	private Compra compra;
 	
 	private Pagamento pagamento;
 	
 	@Inject
 	private CompraRepository compraRepository;
+	private PagamentoRepository pagamentoRepository;
 	
-	public List<ItemCompra> getItensCarrinho() {
+	public List<ProdutoQuantidade> getItensCompra() {
 		Session session = Session.getInstance();
 		
-		carrinho = (Compra) session.get("carrinho");
+		compra = (Compra) session.get("compra");
 		
-		if (carrinho == null)
-			return new ArrayList<ItemCompra>();
+		if (compra == null)
+			return new ArrayList<ProdutoQuantidade>();
 		
-		return carrinho.getListaItemCompra();
+		return compra.getCarrinho().getProdutos();
 	}
 	
 	public TipoPagamento[] getListaTipoPagamento() {
 		return TipoPagamento.values();
-	}
-	
-	public BandeiraCartao[] getListaBandeiraCartao() {
-		return BandeiraCartao.values();
 	}
 	
 	public void finalizarCompra() {
@@ -59,17 +62,18 @@ public class FinalizarCompraController implements Serializable{
 		// validando a bandeira do cartao
 		if (getPagamento().getTipoPagamento().equals(TipoPagamento.CREDITO) || 
 				getPagamento().getTipoPagamento().equals(TipoPagamento.DEBITO) ) {
-			if (getPagamento().getBandeiraCartao() == null) {
-				Util.addErrorMessage("Seleciona uma bandeira do cartão.");
-				return;
-			}
+			
 		}
 		
-		carrinho.setUsuario(usuario);
-		carrinho.setPagamento(getPagamento());
+		compra.setUsuario(usuario);
+		compra.setPagamento(getPagamento());
 		
 		try {
-			compraRepository.salvar(carrinho);
+			compraRepository.salvar(compra);
+			pagamentoRepository.salvar(pagamento);
+			compra.getCarrinho().setCompra_realizada(true);
+			AcompanhamentoCompra acompanhamentoCompra = null;
+			compra.setAcompanhamentoCompra(acompanhamentoCompra);
 			Util.addInfoMessage("Compra realizada com sucesso.");
 		} catch (Exception e) {
 			Util.addErrorMessage(e.getMessage());

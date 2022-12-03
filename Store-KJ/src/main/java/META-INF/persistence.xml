@@ -2,6 +2,7 @@
 <persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 	<persistence-unit name="Store-KJ" transaction-type="RESOURCE_LOCAL">
 	<class>br.unitins.kj.converter.PeriflConverter</class>
+	<class>br.unitins.kj.converter.TipoPagamentoConverter</class>
 	<class>br.unitins.kj.model.AcompanhamentoCompra</class>
 	<class>br.unitins.kj.model.Carrinho</class>
 	<class>br.unitins.kj.model.Chat</class>
@@ -38,7 +39,7 @@
 				value="org.hibernate.dialect.PostgreSQLDialect" />
 
 			<!-- create / create-drop / update / none -->
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
 
 			<!-- Show SQL in console -->
 			<property name="hibernate.show_sql" value="true" />

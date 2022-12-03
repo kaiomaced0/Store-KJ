@@ -32,9 +32,9 @@ public class HomeController {
 		Object resultado = flash.get("pesquisaProduto");
 		// verificando se teve consulta de produto pela pesquisa no template
 		if (resultado != null)
-			setListaProduto((ArrayList<Produto>)resultado);
+			setProdutos((ArrayList<Produto>)resultado);
 		else
-			setListaProduto(repository.buscarTodos());
+			setProdutos(repository.buscarTodos());
 	}
 	
 	public void adicionarCarrinho(Produto produto) {
@@ -48,34 +48,34 @@ public class HomeController {
 		}
 		
 		// verificando se existe itens de compra
-		if (carrinho.getListaProduto() == null)
-			carrinho.setListaProdutoQuantidade(new ArrayList<ProdutoQuantidade>());
+		if (carrinho.getProdutos() == null)
+			carrinho.setProdutos(new ArrayList<ProdutoQuantidade>());
 		
 			
 		// buscando um item na lista do carrinho
-		Optional<ProdutoQuantidade> opItem = carrinho.getListaProduto().stream()
-				.filter(item -> item.getProduto().equals(produto)).findAny();
+		Optional<ProdutoQuantidade> pQuantidade = carrinho.getProdutos().stream()
+				.filter(pQuant -> pQuant.getProduto().equals(produto.getId())).findAny();
 		
-		ProdutoQuantidade item = opItem.orElse(new ProdutoQuantidade());
+		ProdutoQuantidade item = pQuantidade.orElse(new ProdutoQuantidade());
 		
-		item.setPreco(produto.getPreco());
+		item.setValor(produto.getValor());
 		item.setProduto(produto);
 		item.setQuantidade(item.getQuantidade()+1);
 			
 		
 		// buscando se existe um item no carrinho para alterar
 		int indice = -1; 
-		for (int index = 0; index < carrinho.getListaProduto().size(); index++) {
-			if (carrinho.getListaProduto().get(index).getProduto().equals(produto)) {
+		for (int index = 0; index < carrinho.getProdutos().size(); index++) {
+			if (carrinho.getProdutos().get(index).getProduto().equals(produto)) {
 				indice = index;
 				break;
 			}
 		}
 		
 		if (indice >= 0)
-			carrinho.getListaProduto().set(indice, item);
+			carrinho.getProdutos().set(indice, item);
 		else
-			carrinho.getListaProduto().add(item);
+			carrinho.getProdutos().add(item);
 		
 		// adicionando na sessao
 		session.put("carrinho", carrinho);
@@ -85,11 +85,11 @@ public class HomeController {
 	}
 
 
-	public List<Produto> getListaProduto() {
+	public List<Produto> getProdutos() {
 		return listaProduto;
 	}
 
-	public void setListaProduto(List<Produto> listaProduto) {
+	public void setProdutos(List<Produto> listaProduto) {
 		this.listaProduto = listaProduto;
 	}
 

@@ -14,7 +14,14 @@ public class ProdutoQuantidade extends DefaultEntity{
 	private Integer quantidade;
 	private Double valor = produto.getValor() * quantidade;
 	
+	
 
+	public Produto getProduto() {
+		return produto;
+	}
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
 	public Integer getQuantidade() {
 		return quantidade;
 	}

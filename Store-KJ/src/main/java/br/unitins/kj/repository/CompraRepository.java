@@ -12,7 +12,12 @@ public class CompraRepository extends Repository<Compra>{
 	
 	public List<Compra> buscarTodos() {
 		Query query = getEntityManager().createQuery("SELECT c FROM Compra c ORDER BY c.nome");
+		try {
 		return query.getResultList();
+		}
+		catch (Exception e) {
+			return query.getResultList();
+		}	
 	}
 	
 }

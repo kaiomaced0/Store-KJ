@@ -33,6 +33,8 @@ public class Carrinho extends DefaultEntity{
 	@Column(name = "valor_frete")
 	private double valorFrete;
 	
+	@Column(name="compra_realizada")
+	private Boolean compra_realizada;
 
 	public Double getValorSelecionado() {
 		return valorSelecionado;
@@ -56,6 +58,46 @@ public class Carrinho extends DefaultEntity{
 
 	public void setProdutos(List<ProdutoQuantidade> produtos) {
 		this.produtos = produtos;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public List<Cupom> getCupons() {
+		return cupons;
+	}
+
+	public void setCupons(List<Cupom> cupons) {
+		this.cupons = cupons;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	public double getValorFrete() {
+		return valorFrete;
+	}
+
+	public void setValorFrete(double valorFrete) {
+		this.valorFrete = valorFrete;
+	}
+
+	public Boolean getCompra_realizada() {
+		return compra_realizada;
+	}
+
+	public void setCompra_realizada(Boolean compra_realizada) {
+		this.compra_realizada = compra_realizada;
 	}
 	
 	
